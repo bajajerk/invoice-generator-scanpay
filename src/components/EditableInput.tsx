@@ -28,8 +28,9 @@ const EditableInput: FC<Props> = ({className, placeholder, value, onChange, pdfM
     }
 
     const InputBoxWithLabel = () => {
+        const alignment = labelFlexDirection === 'row' ? 'center' : 'flex-start'
         return (
-            <div className="input-box-with-label" style={{display: "flex", flexDirection: labelFlexDirection, alignItems: 'center'}}>
+            <div className="input-box-with-label" style={{display: "flex", flexDirection: labelFlexDirection, alignItems: alignment}}>
                 <div style={{marginRight: 10}}>{labelText}</div>
                 <InputBox/>
             </div>
