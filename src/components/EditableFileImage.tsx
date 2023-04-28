@@ -57,6 +57,7 @@ const EditableFileImage: FC<Props> = ({ className, placeholder, value, width, on
   }
 
   const handleChangeWidth = (value: number) => {
+    debugger
     if (typeof onChangeWidth === 'function') {
       onChangeWidth(value)
     }
