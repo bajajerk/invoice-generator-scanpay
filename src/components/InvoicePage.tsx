@@ -140,60 +140,108 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
     <Document pdfMode={pdfMode}>
       <Page className="invoice-wrapper" pdfMode={pdfMode}>
         {!pdfMode && <Download data={invoice} />}
-
         <View className="flex" pdfMode={pdfMode}>
-          <View className="w-50" pdfMode={pdfMode}>
+          <View className="w-10" pdfMode={pdfMode}>
             <EditableFileImage
-              className="logo"
-              placeholder="Your Logo"
-              value={invoice.logo}
-              width={invoice.logoWidth}
-              pdfMode={pdfMode}
-              onChangeImage={(value) => handleChange('logo', value)}
-              onChangeWidth={(value) => handleChange('logoWidth', value)}
+                className="logo"
+                placeholder="Your Logo"
+                value={invoice.logo}
+                width={invoice.logoWidth}
+                pdfMode={pdfMode}
+                onChangeImage={(value) => handleChange('logo', value)}
+                onChangeWidth={(value) => handleChange('logoWidth', value)}
+            />
+          </View>
+          <View className="w-90" pdfMode={pdfMode} style={{marginLeft: 20}}>
+            <EditableInput
+                className="fs-20 bold"
+                placeholder="Your Company"
+                value={invoice.companyName}
+                onChange={(value) => handleChange('companyName', value)}
+                pdfMode={pdfMode}
             />
             <EditableInput
-              className="fs-20 bold"
-              placeholder="Your Company"
-              value={invoice.companyName}
-              onChange={(value) => handleChange('companyName', value)}
-              pdfMode={pdfMode}
+                placeholder="Your Name"
+                value={invoice.name}
+                onChange={(value) => handleChange('name', value)}
+                pdfMode={pdfMode}
             />
             <EditableInput
-              placeholder="Your Name"
-              value={invoice.name}
-              onChange={(value) => handleChange('name', value)}
-              pdfMode={pdfMode}
+                placeholder="Company's Address"
+                value={invoice.companyAddress}
+                onChange={(value) => handleChange('companyAddress', value)}
+                pdfMode={pdfMode}
             />
             <EditableInput
-              placeholder="Company's Address"
-              value={invoice.companyAddress}
-              onChange={(value) => handleChange('companyAddress', value)}
-              pdfMode={pdfMode}
-            />
-            <EditableInput
-              placeholder="City, State Zip"
-              value={invoice.companyAddress2}
-              onChange={(value) => handleChange('companyAddress2', value)}
-              pdfMode={pdfMode}
+                placeholder="City, State Zip"
+                value={invoice.companyAddress2}
+                onChange={(value) => handleChange('companyAddress2', value)}
+                pdfMode={pdfMode}
             />
             <EditableSelect
-              options={countryList}
-              value={invoice.companyCountry}
-              onChange={(value) => handleChange('companyCountry', value)}
-              pdfMode={pdfMode}
+                options={countryList}
+                value={invoice.companyCountry}
+                onChange={(value) => handleChange('companyCountry', value)}
+                pdfMode={pdfMode}
             />
-          </View>
-          <View className="w-50" pdfMode={pdfMode}>
-            <EditableInput
-              className="fs-45 right bold"
-              placeholder="Invoice"
-              value={invoice.title}
-              onChange={(value) => handleChange('title', value)}
-              pdfMode={pdfMode}
-            />
+
           </View>
         </View>
+
+
+        {/*<View className="flex" pdfMode={pdfMode}>*/}
+        {/*  <View className="w-50" pdfMode={pdfMode}>*/}
+        {/*    <EditableFileImage*/}
+        {/*      className="logo"*/}
+        {/*      placeholder="Your Logo"*/}
+        {/*      value={invoice.logo}*/}
+        {/*      width={invoice.logoWidth}*/}
+        {/*      pdfMode={pdfMode}*/}
+        {/*      onChangeImage={(value) => handleChange('logo', value)}*/}
+        {/*      onChangeWidth={(value) => handleChange('logoWidth', value)}*/}
+        {/*    />*/}
+        {/*    <EditableInput*/}
+        {/*      className="fs-20 bold"*/}
+        {/*      placeholder="Your Company"*/}
+        {/*      value={invoice.companyName}*/}
+        {/*      onChange={(value) => handleChange('companyName', value)}*/}
+        {/*      pdfMode={pdfMode}*/}
+        {/*    />*/}
+        {/*    <EditableInput*/}
+        {/*      placeholder="Your Name"*/}
+        {/*      value={invoice.name}*/}
+        {/*      onChange={(value) => handleChange('name', value)}*/}
+        {/*      pdfMode={pdfMode}*/}
+        {/*    />*/}
+        {/*    <EditableInput*/}
+        {/*      placeholder="Company's Address"*/}
+        {/*      value={invoice.companyAddress}*/}
+        {/*      onChange={(value) => handleChange('companyAddress', value)}*/}
+        {/*      pdfMode={pdfMode}*/}
+        {/*    />*/}
+        {/*    <EditableInput*/}
+        {/*      placeholder="City, State Zip"*/}
+        {/*      value={invoice.companyAddress2}*/}
+        {/*      onChange={(value) => handleChange('companyAddress2', value)}*/}
+        {/*      pdfMode={pdfMode}*/}
+        {/*    />*/}
+        {/*    <EditableSelect*/}
+        {/*      options={countryList}*/}
+        {/*      value={invoice.companyCountry}*/}
+        {/*      onChange={(value) => handleChange('companyCountry', value)}*/}
+        {/*      pdfMode={pdfMode}*/}
+        {/*    />*/}
+        {/*  </View>*/}
+        {/*  <View className="w-50" pdfMode={pdfMode}>*/}
+        {/*    <EditableInput*/}
+        {/*      className="fs-45 right bold"*/}
+        {/*      placeholder="Invoice"*/}
+        {/*      value={invoice.title}*/}
+        {/*      onChange={(value) => handleChange('title', value)}*/}
+        {/*      pdfMode={pdfMode}*/}
+        {/*    />*/}
+        {/*  </View>*/}
+        {/*</View>*/}
 
         <View className="flex mt-40" pdfMode={pdfMode}>
           <View className="w-55" pdfMode={pdfMode}>
@@ -214,6 +262,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
               value={invoice.clientAddress}
               onChange={(value) => handleChange('clientAddress', value)}
               pdfMode={pdfMode}
+              labelText={'Address:- '}
             />
             <EditableInput
               placeholder="City, State Zip"
@@ -221,12 +270,27 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
               onChange={(value) => handleChange('clientAddress2', value)}
               pdfMode={pdfMode}
             />
-            <EditableSelect
-              options={countryList}
-              value={invoice.clientCountry}
-              onChange={(value) => handleChange('clientCountry', value)}
-              pdfMode={pdfMode}
+            <EditableInput
+                placeholder="Client's Email"
+                value={invoice.clientAddress2}
+                onChange={(value) => handleChange('clientEmail', value)}
+                pdfMode={pdfMode}
+                labelText={'Email: '}
             />
+            <EditableInput
+                placeholder="Client's Phone"
+                value={invoice.clientAddress2}
+                onChange={(value) => handleChange('clientPhone', value)}
+                pdfMode={pdfMode}
+                labelText={'Phone: '}
+
+            />
+            {/*<EditableSelect*/}
+            {/*  options={countryList}*/}
+            {/*  value={invoice.clientCountry}*/}
+            {/*  onChange={(value) => handleChange('clientCountry', value)}*/}
+            {/*  pdfMode={pdfMode}*/}
+            {/*/>*/}
           </View>
           <View className="w-45" pdfMode={pdfMode}>
             <View className="flex mb-5" pdfMode={pdfMode}>

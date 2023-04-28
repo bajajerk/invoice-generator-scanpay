@@ -15,7 +15,7 @@ export const initialInvoice: Invoice = {
   companyAddress: '',
   companyAddress2: '',
   companyCountry: 'United States',
-  billTo: 'Bill To:',
+  billTo: 'Billed To:',
   clientName: '',
   clientAddress: '',
   clientAddress2: '',
@@ -47,4 +47,6 @@ export const initialInvoice: Invoice = {
   notes: 'It was great doing business with you.',
   termLabel: 'Terms & Conditions',
   term: 'Please make the payment by the due date.',
+  clientPhone: '',
+  clientEmail: '',
 }
